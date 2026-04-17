@@ -10,10 +10,12 @@ class LoginPage(BasePage):
 
     async def open_login_modal(self):
         await self.click(self.LOGIN_BTN)
+        await self.page.wait_for_selector("#loginusername", state="visible")
 
     async def login(self, username, password):
         await self.fill(self.USERNAME, username)
         await self.fill(self.PASSWORD, password)
+
 
         try:
             async with self.page.expect_event("dialog", timeout=3000) as dialog_info:
