@@ -48,7 +48,6 @@ Playwright_demoblaze_async/
 │
 ├── conftest.py
 ├── pytest.ini
-├── requirements.txt
 ├── README.md
 ```
 
