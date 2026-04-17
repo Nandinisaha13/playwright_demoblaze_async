@@ -5,12 +5,6 @@ It demonstrates real-world QA automation practices including async execution, Pa
 
 ---
 
-## 🔗 Portfolio
-
-👉 Check out my full QA portfolio here: **[YOUR_PORTFOLIO_LINK_HERE]**
-
----
-
 ## 🧠 Tech Stack
 
 * Python 3.11+
