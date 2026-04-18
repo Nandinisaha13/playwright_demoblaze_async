@@ -12,9 +12,7 @@ async def test_add_product_to_cart(page):
 
     await home.select_product()
     await product.wait_for_page()
-
     alert = await product.add_to_cart()
-
     assert alert == "Product added"
     await cart.open_cart()
     products = await cart.get_product_names()
