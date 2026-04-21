@@ -25,7 +25,7 @@ async def test_delete_product_from_cart(page):
     await cart.open_cart()
     cart_items = await cart.get_product_names()
 
-    for i in products_to_add:
+    for item in products_to_add:
         assert item in cart_items
 
     await cart.delete_all_products()

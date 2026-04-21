@@ -11,11 +11,20 @@ class CartPage(BasePage):
     
     async def delete_all_products(self):
         rows = self.page.locator(".success")
+
         while await rows.count() > 0:
-            row = rows.first
-            delete_btn = row.get_by_role("link", name="Delete")
-            await delete_btn.click()
-            await row.wait_for(state="detached")
+            initial_count = await rows.count()
+
+            # always click first row's delete
+            await rows.first.get_by_role("link", name="Delete").click()
+
+            # wait until count decreases
+            await self.page.wait_for_function(
+    """(args) => 
+        document.querySelectorAll(args.selector).length < args.count
+    """,
+    arg={"selector": ".success", "count": initial_count}
+)
 
     async def is_cart_empty(self):
         return await self.page.locator(".success").count() == 0
