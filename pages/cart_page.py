@@ -36,3 +36,6 @@ class CartPage(BasePage):
     async def get_total_prices(self):
         total = await self.page.locator("#totalp").inner_text()
         return int(total)
+    
+    async def place_order(self):
+        await self.page.get_by_role("button", name="Place Order").click()
