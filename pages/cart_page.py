@@ -19,3 +19,11 @@ class CartPage(BasePage):
 
     async def is_cart_empty(self):
         return await self.page.locator(".success").count() == 0
+    
+    async def get_product_prices(self):
+        prices = await self.page.locator("td:nth-child(3)").all_inner_texts()
+        return [int(price) for price in prices]
+    
+    async def get_total_prices(self):
+        total = await self.page.locator("#totalp").inner_text()
+        return int(total)
