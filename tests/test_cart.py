@@ -10,7 +10,7 @@ async def test_add_product_to_cart(page):
     product = ProductPage(page)
     cart = CartPage(page)
 
-    await home.select_product()
+    await home.select_product_by_name("Samsung galaxy s6")
     await product.wait_for_page()
     alert = await product.add_to_cart()
     assert alert == "Product added"
