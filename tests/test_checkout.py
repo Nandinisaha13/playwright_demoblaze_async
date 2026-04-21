@@ -47,3 +47,5 @@ async def test_checkout(page):
     assert "Id" in details
     assert "Amount" in details
     assert "Card Number" in details
+
+    await page.get_by_role("button", name="OK").click()

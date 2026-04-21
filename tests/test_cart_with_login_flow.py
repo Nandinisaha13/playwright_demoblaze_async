@@ -12,7 +12,6 @@ async def test_add_multiple_products_after_login(page):
     product = ProductPage(page)
     cart = CartPage(page)
 
-    # Step 1: Login
     await login.open_login_modal()
     alert = await login.login("QA Check", "Password")
 
@@ -33,3 +32,5 @@ async def test_add_multiple_products_after_login(page):
     products = await cart.get_product_names()
     assert "Samsung galaxy s6" in products
     assert "Nokia lumia 1520" in products
+
+    await cart.delete_all_products()
